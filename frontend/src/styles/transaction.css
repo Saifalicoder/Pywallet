@@ -1,0 +1,114 @@
+.card {
+  width: 100%;
+  border: 1px solid #b9b9b9; /* Green border */
+  border-radius: 12px; /* Rounded corners */
+  
+
+  margin: 5px;
+  background-color: #fff; /* White background */
+  transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+.card-header {
+  margin-bottom: 16px;
+  border-bottom: 2px solid #4CAF50; /* Bottom border */
+  padding-bottom: 10px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: bold; /* Bold title */
+}
+
+.card-body {
+  margin-bottom: 16px;
+  font-size: 16px; /* Increased font size */
+  color: #555; /* Darker gray text */
+}
+
+.card-meta {
+  font-size: 14px;
+  color: #777; /* Light gray text */
+}
+
+.card-meta p {
+  margin: 4px 0;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  background-color: #f44336; /* Red button */
+  color: #fff;
+  border: none;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold; /* Bold text on button */
+}
+
+.edit-btn-complete {
+  background-color: #74e141; /* Red button */
+  color: #fff;
+  border: none;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold; /* Bold text on button */
+}
+.edit-btn-incomplete {
+  background-color: #fac833; /* Red button */
+  color: #fff;
+  border: none;
+  padding: 0.2em 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold; /* Bold text on button */
+}
+
+.delete-btn:hover {
+  background-color: #c62828; /* Darker red on hover */
+}
+.completed{
+ text-decoration: line-through;
+}
+.pending{
+  text-decoration:none
+}
+.done{
+  opacity: 0.5;
+  background-color: rgb(197, 197, 197);
+ 
+}
+.done:hover{
+  opacity: 0.8;
+}
+
+
+@media only screen and   (max-width: 1400px) {
+  .card{
+
+    min-width: 90%;
+   }
+}
+@media only screen and   (max-width: 1000px) {
+  .card{
+
+   min-width: 100%;
+  }
+  
+ 
+}

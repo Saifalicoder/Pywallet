@@ -6,4 +6,6 @@ urlpatterns = [
  path('add/', add_money, name='add_money'),
 path('remove/', remove_money, name='remove_money'),
 path('transactions/',transaction_history, name='transaction_history'),
+path('balance/',wallet_balance, name='transaction_history'),
+path('status/',wallet_status, name='status'),
 ]

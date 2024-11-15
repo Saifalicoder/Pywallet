@@ -8,6 +8,13 @@ from .serializers import  WalletSerializer, TransactionSerializer
 from django.db import transaction
 # Create your views here.
 
+@api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
+def wallet_status(request):
+    # Wallet will already be created during signup, just return the wallet data
+    wallet = Wallet.objects.get(user=request.user)
+    return Response({"status":wallet.is_enabled})
+
 # User Wallet Enable API
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
@@ -24,16 +31,22 @@ def enable_wallet(request):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def add_money(request):
-    amount = request.data.get('amount')
+    amount =float(request.data.get('amount'))
+    print(type(amount))
+    print(amount)
     if amount <= 0:
         return Response({"error": "Amount must be positive"}, status=status.HTTP_400_BAD_REQUEST)
 
     wallet = Wallet.objects.get(user=request.user)
+    print(wallet.balance)
     try:
         with transaction.atomic():
             if wallet.is_enabled:
-                wallet.balance += amount
+      
+                wallet.balance = float(wallet.balance)+amount
+             
                 wallet.save()
+     
                 Transaction.objects.create(user=request.user, amount=amount, transaction_type="add")
             else:
                 return Response({'error': "wallet is disabled"})
@@ -49,7 +62,7 @@ def add_money(request):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def remove_money(request):
-    amount = request.data.get('amount')
+    amount = float(request.data.get('amount'))
     if amount <= 0:
         return Response({"error": "Amount must be positive"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -59,7 +72,7 @@ def remove_money(request):
             if wallet.is_enabled:
                 if wallet.balance < amount:
                     return Response({"error": "Insufficient balance"}, status=status.HTTP_400_BAD_REQUEST)
-                wallet.balance -= amount
+                wallet.balance = float(wallet.balance) - amount
                 wallet.save()
                 # Record the transaction
                 Transaction.objects.create(user=request.user, amount=amount, transaction_type="remove")
@@ -76,3 +89,13 @@ def transaction_history(request):
     transactions = Transaction.objects.filter(user=request.user).order_by('-date')
     serializer = TransactionSerializer(transactions, many=True)
     return Response(serializer.data)
+
+# User Wallet Balance API
+@api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
+def wallet_balance(request):
+    wallet = Wallet.objects.get(user=request.user)
+    if wallet.is_enabled:
+        return Response({'balance': wallet.balance})
+    else:
+        return Response({'error': "wallet is disabled"})
