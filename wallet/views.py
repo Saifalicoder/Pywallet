@@ -49,7 +49,7 @@ def add_money(request):
      
                 Transaction.objects.create(user=request.user, amount=amount, transaction_type="add")
             else:
-                return Response({'error': "wallet is disabled"})
+                return Response({'error': "wallet is disabled"},status=status.HTTP_400_BAD_REQUEST)
         return Response({'balance': wallet.balance})
     # Record the transaction
     except Exception as e:
