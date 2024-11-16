@@ -90,7 +90,7 @@
 ```
 ## Deposit Money
 
-|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/walllet/add/``` |
+|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/wallet/add/``` |
 | :-------- | :-------- | :------------------------- |
 
 | Parameter | Type     | Description                |
@@ -115,7 +115,7 @@
 
 ## Withdraw Money
 
-|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/walllet/remove/``` |
+|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/wallet/remove/``` |
 | :-------- | :-------- | :------------------------- |
 
 | Parameter | Type     | Description                |
@@ -170,7 +170,7 @@
 
 ## Enable Wallet
 
-|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/walllet/enable/``` |
+|![Static Badge](https://img.shields.io/badge/Authenticated%20User-blue)|![Static Badge](https://img.shields.io/badge/Method-POST-GREEN)| ```/api/wallet/enable/``` |
 | :-------- | :-------- | :------------------------- |
 
 **Response**
